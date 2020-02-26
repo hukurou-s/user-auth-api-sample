@@ -19,6 +19,8 @@ func init() {
 
 	controller := controllers.NewUserController(NewSqlHandler())
 
+	// controller.Login(c)の引数は自分で定義したcontextなので、
+	// echo.Context型のcを引数として受け取る関数の中で呼び出す必要がある
 	e.POST("/login", func(c echo.Context) error { return controller.Login(c) })
 
 	pubKey := crypt.NewPublicKey()
