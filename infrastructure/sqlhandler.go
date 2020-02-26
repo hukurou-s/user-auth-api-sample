@@ -8,7 +8,7 @@ import (
 )
 
 func NewSqlHandler() database.SqlHandler {
-	db, err := gorm.Open("postgres", "user=LEO dbname=user-auth-sample-db password='' sslmode=disable")
+	db, err := gorm.Open("postgres", "user=hoge dbname=user-auth-sample-db password='poge' sslmode=disable")
 
 	if err != nil {
 		panic(err)
