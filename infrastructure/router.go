@@ -21,17 +21,6 @@ func init() {
 
 	e.POST("/login", func(c echo.Context) error { return controller.Login(c) })
 
-	// 公開鍵を読み込む
-	//pubKeyData, err := ioutil.ReadFile("./rsa/id_rsa.pub.pkcs8")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//
-	//pubKey, err := jwt.ParseRSAPublicKeyFromPEM(pubKeyData)
-	//if err != nil {
-	//	panic(err)
-	//}
-
 	pubKey := crypt.NewPublicKey()
 
 	// /user以下ではjwtによる認証が必要になる

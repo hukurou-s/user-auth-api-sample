@@ -61,17 +61,7 @@ func (controller *UserController) Login(c Context) error {
 		})
 
 	}
-	//
-	//// 秘密鍵を読み込み
-	//keyData, err := ioutil.ReadFile("./rsa/id_rsa")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//key, err := jwt.ParseRSAPrivateKeyFromPEM(keyData)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//
+
 	key := crypt.NewPrivateKey()
 	token := jwt.New(jwt.SigningMethodRS256)
 	// claimの設定

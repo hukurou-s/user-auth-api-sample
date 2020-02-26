@@ -6,21 +6,8 @@ import (
 	"io/ioutil"
 )
 
-//type RSAKey struct {
-//	privateKey *rsa.PrivateKey
-//	publicKey *rsa.PublicKey
-//}
-
 var privateKey *rsa.PrivateKey
 var publicKey *rsa.PublicKey
-
-//func (keys *RSAKey) getPublicKey() *rsa.PublicKey {
-//	return keys.publicKey
-//}
-//
-//func (keys *RSAKey) getPrivateKey() *rsa.PrivateKey {
-//	return keys.privateKey
-//}
 
 func NewPrivateKey() *rsa.PrivateKey {
 	if privateKey == nil {
