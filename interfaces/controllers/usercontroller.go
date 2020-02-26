@@ -2,11 +2,12 @@ package controllers
 
 import (
 	"golang.org/x/crypto/bcrypt"
-	"io/ioutil"
 	"net/http"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
+
+	"github.com/hukurou-s/user-auth-api-sample/crypt"
 	"github.com/hukurou-s/user-auth-api-sample/domain"
 	"github.com/hukurou-s/user-auth-api-sample/interfaces/database"
 	"github.com/hukurou-s/user-auth-api-sample/usecase"
@@ -60,17 +61,18 @@ func (controller *UserController) Login(c Context) error {
 		})
 
 	}
-
-	// 秘密鍵を読み込み
-	keyData, err := ioutil.ReadFile("./rsa/id_rsa")
-	if err != nil {
-		panic(err)
-	}
-	key, err := jwt.ParseRSAPrivateKeyFromPEM(keyData)
-	if err != nil {
-		panic(err)
-	}
-
+	//
+	//// 秘密鍵を読み込み
+	//keyData, err := ioutil.ReadFile("./rsa/id_rsa")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//key, err := jwt.ParseRSAPrivateKeyFromPEM(keyData)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	key := crypt.NewPrivateKey()
 	token := jwt.New(jwt.SigningMethodRS256)
 	// claimの設定
 	claims := token.Claims.(jwt.MapClaims)
